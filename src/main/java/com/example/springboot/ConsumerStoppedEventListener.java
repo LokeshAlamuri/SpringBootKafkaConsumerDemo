@@ -24,10 +24,10 @@ public class ConsumerStoppedEventListener implements ApplicationListener<Consume
 
         System.out.println("Enter Consumer stopped Event Listener"+Thread.currentThread().getName()
             + ":" + listenerContainerRegistry.getListenerContainers().stream().
-                filter(messageListenerContainer -> messageListenerContainer.isRunning()).count() +
+                filter(messageListenerContainer -> messageListenerContainer.isChildRunning()).count() +
                 ":" + listenerContainerRegistry.getListenerContainers().size());
         if(listenerContainerRegistry.getListenerContainers().stream().
-                filter(messageListenerContainer -> messageListenerContainer.isRunning()).count() == 0)
+                filter(messageListenerContainer -> messageListenerContainer.isChildRunning()).count() == 0)
             applicationContext.close();
         System.out.println("Exit Consumer stopped Event Listener");
     }
